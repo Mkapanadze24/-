@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="LifeInsurance" verbose="1" thread-count="1" parallel="tests">
+    <test name="LifeInsurance" parallel="tests">
+        <classes>
+            <class name="LifeInsurance"/>
+        </classes>
+    </test>
+    <test name="test1" parallel="tests">
+
+    </test>
+
+</suite>
