@@ -1,12 +1,11 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="LifeInsurance" verbose="1" thread-count="1" parallel="tests">
-    <test name="LifeInsurance" parallel="tests">
+<suite name="LifeInsuranceTests" verbose="1" thread-count="3" parallel="tests">
+    <test name="CarInsuranceTests" parallel="tests">
         <classes>
-            <class name="LifeInsurance"/>
+            <class name="RegisterTests"/>
+            <class name="CarInsuranceTests"/>
+            <class name="LifeInsuranceTests"/>
         </classes>
-    </test>
-    <test name="test1" parallel="tests">
-
     </test>
 
 </suite>

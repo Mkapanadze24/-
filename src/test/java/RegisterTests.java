@@ -3,25 +3,37 @@ import Utils.ChromeRunner;
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Step;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class RegisterTests extends ChromeRunner {
+
     @Test
     @Severity(SeverityLevel.NORMAL)
-    public void Registertests1() {
+    public void RegisterTests1() {
         RegisterPageSteps registerPageSteps = new RegisterPageSteps();
         registerPageSteps.loginInput();
-        Assert.assertFalse(registerPageSteps.LoginInput.is(Condition.visible));
+        registerPageSteps.WriteemailOrPN("email");
+        Assert.assertTrue(registerPageSteps.emailOrPNInput.is(Condition.visible));
+        registerPageSteps.WriteemailOrPN("PN");
+        Assert.assertTrue(registerPageSteps.emailOrPNInput.is(Condition.visible));
     }
 
     @Test
     @Severity(SeverityLevel.NORMAL)
-    public void  RegisterTests2 () {
+    public void RegisterTest2() {
         RegisterPageSteps registerPageSteps = new RegisterPageSteps();
         registerPageSteps.loginInput();
-        registerPageSteps.WriteemailOrPN("email","PN");
-        Assert.assertTrue(registerPageSteps.LoginInput.is(Condition.visible));
+        registerPageSteps.Registration()
+                .pnInput()
+                .nextorInput()
+                .errorInput();
+        Assert.assertTrue(registerPageSteps.registrationInput.isEnabled());
+        Assert.assertFalse(registerPageSteps.Next.is(Condition.empty));
+        Assert.assertTrue(registerPageSteps.Error.isEnabled());
+
+
     }
 }
 

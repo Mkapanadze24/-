@@ -7,6 +7,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class ChromeRunner {
     @BeforeMethod (description = "Configure browser before tests")
@@ -14,6 +15,7 @@ public class ChromeRunner {
         SelenideLogger.addListener("allure", new AllureSelenide().screenshots(true).savePageSource(false));
         System.setProperty("Selenide.Browser.Size", "1980x1980");
         open("https://on.tbcinsurance.ge/");
+
     }
     @AfterMethod (description = "Close browser after tests")
     public void tearDown(){
